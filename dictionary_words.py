@@ -1,24 +1,32 @@
 import sys
 from random import randrange
+from time import time
 
-#Get sentence length from command line
+# Get sentence length from command line
 sentenceLength = int(sys.argv[-1])
 
-#Open file and read lines into array called words
-file = open("dictionary")
+# Open file and read lines into array called words,
+# Stripping \n character in every line read
+file = open("words.txt")
 words = [line.rstrip("\n") for line in file.readlines()]
 
-#Initialize array to hold random words
+# Initialize array to hold random words
 sentenceArray = []
 
-#Iterate through length of desired sentence
+# Iterate through length of desired sentence
 for i in xrange(sentenceLength):
-    #Append a randomly indexed word from words to the array
+    # Append a randomly indexed word from words to the array
     sentenceArray.append(words[randrange(0, len(words))])
 
-#Print out each word in array without a new line
+# Take a sample of epoch time before printing the result
+time_before = time()
+# Print out each word in array without a new line
 for word in sentenceArray:
     print word
+# Take a sample of epoch time after printing the result
+time_after = time()
+# Print the runtime by subtracting time_before from time_after
+print(time_after - time_before)
 
-#Close the file
+# Close the file
 file.close()

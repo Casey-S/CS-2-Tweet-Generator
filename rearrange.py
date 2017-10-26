@@ -1,12 +1,15 @@
 import random
+import sys
 
 # Complete task with random's shuffle function
-word_list = raw_input().split()
+word_list = sys.argv[1:]
 
 random.shuffle(word_list)
 
-print(word_list)
+print(" ".join(word_list))
 
+'''
+'''
 
 # Complete task with custom shuffle function
 words = raw_input().split()
@@ -28,6 +31,7 @@ def shuffle(words):
     return shuffledWords_arr
 
 
-shuffledWords = shuffle(words)
+# Function output formatting - add a space behind each word
+test = " ".join(shuffle(words))
 
-print(shuffledWords)
+print(test)

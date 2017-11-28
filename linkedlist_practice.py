@@ -1,5 +1,3 @@
-from __future__ import print_function
-
 
 class Node(object):
 
@@ -54,11 +52,14 @@ class LinkedList(object):
     def append(self, item):
         """Insert the given item at the tail of this linked list"""
         # TODO: append given item
-        if self.is_empty():
-            self.head
-        newNode = Node(item)
-        current = self.tail
-        current.next = newNode
+        new_node = Node(item)
+        if self.tail is None:
+            self.head = new_node
+            self.tail = new_node
+        else:
+            node = self.tail
+            node.next = new_node
+            self.tail = new_node
 
     def prepend(self, item):
         """Insert the given item at the head of this linked list"""
@@ -73,10 +74,18 @@ class LinkedList(object):
         # TODO: find given item and delete if found
 
         current = self.head
+        previousNode = None
         while current is not None:
-            if current.next.data == item:
-                current.next = current.next.next
-
+            if current.data == item:
+                if previousNode is None:
+                    self.head = current.next
+                else:
+                    previousNode.next = current.next
+                if current.next is None:
+                    self.tail = previousNode
+                return
+            previousNode = current
+            current = current.next
 
     def find(self, quality):
         """Return an item from this linked list satisfying the given quality"""

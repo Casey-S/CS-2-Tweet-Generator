@@ -4,9 +4,11 @@ import string
 
 def simplified_text_array(raw_file_string):
     # # Removes 's and then any punctuation from the string
-    # simplified_text = file_string.replace("'s", "").translate(None, string.punctuation).lower()
-    # # Returns simplified text as an array of words
-    # return simplified_text.split()
+    '''Deprecated code retained for reference
+    simplified_text = file_string.replace("'s", "").translate(None, string.punctuation).lower()
+    # Returns simplified text as an array of words
+    return simplified_text.split()
+    '''
     words_clean = raw_file_string.translate(string.maketrans("", ""), string.punctuation)
     words_clean = words_clean.replace('\n', '')
     words_clean = words_clean.replace('\r', '')
